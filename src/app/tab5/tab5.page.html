@@ -1,0 +1,119 @@
+<app-header></app-header>
+
+<ion-content>
+
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Os meus dados</ion-card-title>
+            <ion-card-subtitle>Para mudar alguma informação envie mensagem por Whatsapp</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list *ngIf="user">
+                <ion-item>
+                    <ion-label>
+                        Nome
+                    </ion-label>
+                    {{ user.driver.name }}
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        Email
+                    </ion-label>
+                    {{ user.driver.email }}
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        Telefone
+                    </ion-label>
+                    {{ user.driver.phone }}
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        CC
+                    </ion-label>
+                    {{ user.driver.citizen_card }}
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        NIF
+                    </ion-label>
+                    {{ user.driver.payment_vat }}
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        Código
+                    </ion-label>
+                    {{ user.driver.code }}
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        Data de início
+                    </ion-label>
+                    {{ user.driver.start_date }}
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        IBAN
+                    </ion-label>
+                    {{ user.driver.iban }}
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>
+                        Endereço
+                    </ion-label>
+                    {{ user.driver.address }}
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        Código postal
+                    </ion-label>
+                    {{ user.driver.zip }}
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        Localidade
+                    </ion-label>
+                    {{ user.driver.city }}
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        Carta de condução
+                    </ion-label>
+                    {{ user.driver.driver_license }}
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        Código UBER
+                    </ion-label>
+                    {{ user.driver.uber_uuid }}
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        Código BOLT
+                    </ion-label>
+                    {{ user.driver.bolt_name }}
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        Viatura
+                    </ion-label>
+                    {{ user.driver.license_plate }}
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        Marca
+                    </ion-label>
+                    {{ user.driver.brand }}
+                </ion-item>
+                <ion-item>
+                    <ion-label>
+                        Modelo
+                    </ion-label>
+                    {{ user.driver.model }}
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <app-chat></app-chat>
+</ion-content>
