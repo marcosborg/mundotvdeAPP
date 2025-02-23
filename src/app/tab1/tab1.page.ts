@@ -82,6 +82,7 @@ export class Tab1Page {
           this.api.admin(data).subscribe((resp: any) => {
             this.activityLaunches = resp.activityLaunches;
             this.last_receipt = resp.last_receipt;
+            console.log(resp);
             this.value = this.last_receipt.value;
             this.can_create_receipt = resp.can_create_receipt;
             this.api.lastTimeLog(data).subscribe((resp: any) => {
