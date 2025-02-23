@@ -3,12 +3,12 @@
 <ion-content>
     <ion-card>
         <ion-card-content>
-            <ion-segment value="receipts" [(ngModel)]="segment">
-                <ion-segment-button value="receipts">
-                    <ion-label>Recibos</ion-label>
-                </ion-segment-button>
+            <ion-segment value="statements" [(ngModel)]="segment">
                 <ion-segment-button value="statements">
                     <ion-label>Extratos</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="receipts">
+                    <ion-label>Recibos</ion-label>
                 </ion-segment-button>
             </ion-segment>
         </ion-card-content>
@@ -16,6 +16,17 @@
             <ion-card-title></ion-card-title>
             <ion-card-subtitle></ion-card-subtitle>
         </ion-card-header>
+        <div *ngIf="segment == 'statements'">
+            <ion-card-content>
+                <ion-list>
+                    <ion-item *ngFor="let report of reports" button="true" (click)="openPdf(report.id)">
+                        <ion-label>
+                            Semana {{ report.week.number }} de {{ report.week.tvde_month.year.name }}
+                        </ion-label>
+                    </ion-item>
+                </ion-list>
+            </ion-card-content>
+        </div>
         <div *ngIf="segment == 'receipts'">
             <ion-card-content>
                 <ion-list *ngFor="let receipt of receipts">
@@ -28,17 +39,7 @@
                 </ion-list>
             </ion-card-content>
         </div>
-        <div *ngIf="segment == 'statements'">
-            <ion-card-content>
-                <ion-list>
-                    <ion-item *ngFor="let report of reports" button="true" (click)="openPdf(report.id)">
-                        <ion-label>
-                            Semana {{ report.week.number }} de {{ report.week.tvde_month.year.name }}
-                        </ion-label>
-                    </ion-item>
-                </ion-list>
-            </ion-card-content>
-        </div>
     </ion-card>
-    <app-chat></app-chat>
+    
 </ion-content>
+<app-chat></app-chat>

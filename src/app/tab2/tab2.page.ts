@@ -55,7 +55,7 @@ export class Tab2Page {
     private functions: FunctionsService
   ) { }
 
-  segment: string = 'receipts';
+  segment: string = 'statements';
   receipts: any;
   reports: any;
   access_token: any;

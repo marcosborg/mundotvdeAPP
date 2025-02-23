@@ -20,15 +20,19 @@ export class StartPage implements OnInit {
     private router: Router,
   ) { }
 
+  access_token: any;
+
   ngOnInit() {
-    this.preferences.checkName('access_token').then((resp) => {
-      let access_token = resp.value;
-      if (access_token) {
-        this.router.navigateByUrl('tabs/tab1');
-      } else {
-        this.router.navigateByUrl('login');
-      }
-    });
+    setTimeout(() => {
+      this.preferences.checkName('access_token').then((resp: any) => {
+        this.access_token = resp.value;
+        if (this.access_token) {
+          this.router.navigateByUrl('tabs/tab1');
+        } else {
+          this.router.navigateByUrl('login');
+        }
+      });
+    }, 500);
   }
 
 }

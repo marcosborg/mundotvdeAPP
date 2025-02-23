@@ -56,7 +56,7 @@
                         {{ selectedFile ? selectedFile.name : 'Escolher Ficheiro' }}
                     </ion-button>
                     <ion-item lines="none">
-                        <ion-input labelPlacement="stacked" label="Valor do recibo (€)" [(ngModel)]="value"></ion-input>
+                        <ion-input labelPlacement="stacked" label="Valor do saldo disponível (€)" [(ngModel)]="value"></ion-input>
                     </ion-item>
                     <!-- Botão de enviar -->
                     <ion-button expand="block" type="submit" color="success" [disabled]="!selectedFile">
@@ -377,5 +377,5 @@
         </div>
     </ion-card>
 
-    <app-chat></app-chat>
 </ion-content>
+<app-chat></app-chat>
