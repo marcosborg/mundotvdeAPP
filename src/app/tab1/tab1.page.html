@@ -45,7 +45,7 @@
                 <ion-card-title>Recibo</ion-card-title>
                 <ion-card-subtitle>Envie o recibo da semana</ion-card-subtitle>
             </ion-card-header>
-            <ion-card-content *ngIf="can_create_receipt && last_receipt.paid == 0">
+            <ion-card-content *ngIf="can_create_receipt">
                 <form (submit)="onFileUpload()">
                     <ion-label position="stacked">Selecione o ficheiro</ion-label>
                     <!-- Campo de entrada escondido -->
@@ -56,7 +56,7 @@
                         {{ selectedFile ? selectedFile.name : 'Escolher Ficheiro' }}
                     </ion-button>
                     <ion-item lines="none">
-                        <ion-input labelPlacement="stacked" label="Valor do saldo disponível (€)" [(ngModel)]="value"></ion-input>
+                        <ion-input labelPlacement="stacked" label="Valor do saldo disponível (€)" [(ngModel)]="total"></ion-input>
                     </ion-item>
                     <!-- Botão de enviar -->
                     <ion-button expand="block" type="submit" color="success" [disabled]="!selectedFile">
@@ -64,8 +64,8 @@
                     </ion-button>
                 </form>
             </ion-card-content>
-            <ion-card-content *ngIf="!can_create_receipt || last_receipt.paid == 1">
-                <p>Recibo já enviado{{ last_receipt.paid == 1 ? ' e pago.' : '' }}</p>
+            <ion-card-content *ngIf="!can_create_receipt">
+                <p>Recibo já enviado</p>
             </ion-card-content>
             <ion-card-header>
                 <ion-card-title>Análise gráfica</ion-card-title>

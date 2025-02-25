@@ -82,6 +82,7 @@ export class Tab1Page {
           this.api.admin(data).subscribe((resp: any) => {
             this.activityLaunches = resp.activityLaunches;
             this.last_receipt = resp.last_receipt;
+            this.total = resp.total;
             console.log(resp);
             this.value = this.last_receipt.value;
             this.can_create_receipt = resp.can_create_receipt;
@@ -110,6 +111,7 @@ export class Tab1Page {
   can_create_receipt: boolean = false;
   value: number = 0;
   status: string = '...';
+  total: number = 0;
 
   onFileSelected(event: any): void {
     const file = event.target.files[0];
