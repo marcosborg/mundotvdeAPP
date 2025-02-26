@@ -17,6 +17,7 @@ import {
   IonList,
   IonItem,
   IonLabel,
+  IonNote,
  } from '@ionic/angular/standalone';
 @Component({
   selector: 'app-tab5',
@@ -36,6 +37,7 @@ import {
     IonList,
     IonItem,
     IonLabel,
+    IonNote,
   ]
 })
 export class Tab5Page {

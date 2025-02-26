@@ -11,106 +11,106 @@
             <ion-list *ngIf="user">
                 <ion-item>
                     <ion-label>
-                        Nome
+                        <ion-note>Nome</ion-note><br>
+                        {{ user.driver.name }}
                     </ion-label>
-                    {{ user.driver.name }}
                 </ion-item>
                 <ion-item>
                     <ion-label>
-                        Email
+                        <ion-note>Email</ion-note><br>
+                        {{ user.driver.email }}
                     </ion-label>
-                    {{ user.driver.email }}
                 </ion-item>
                 <ion-item>
                     <ion-label>
-                        Telefone
+                        <ion-note>Telefone</ion-note><br>
+                        {{ user.driver.phone }}
                     </ion-label>
-                    {{ user.driver.phone }}
                 </ion-item>
                 <ion-item>
                     <ion-label>
-                        CC
+                        <ion-note>Cartão de cidadão</ion-note><br>
+                        {{ user.driver.citizen_card }}
                     </ion-label>
-                    {{ user.driver.citizen_card }}
                 </ion-item>
                 <ion-item>
                     <ion-label>
-                        NIF
+                        <ion-note>NIF</ion-note><br>
+                        {{ user.driver.nif }}
                     </ion-label>
-                    {{ user.driver.payment_vat }}
                 </ion-item>
                 <ion-item>
                     <ion-label>
-                        Código
+                        <ion-note>Código</ion-note><br>
+                        {{ user.driver.code }}
                     </ion-label>
-                    {{ user.driver.code }}
                 </ion-item>
                 <ion-item>
                     <ion-label>
-                        Data de início
+                        <ion-note>Data de início</ion-note><br>
+                        {{ user.driver.start_date }}
                     </ion-label>
-                    {{ user.driver.start_date }}
                 </ion-item>
                 <ion-item>
                     <ion-label>
-                        IBAN
+                        <ion-note>IBAN</ion-note><br>
+                        {{ user.driver.iban }}
                     </ion-label>
-                    {{ user.driver.iban }}
                 </ion-item>
 
                 <ion-item>
                     <ion-label>
-                        Endereço
+                        <ion-note>Endereço</ion-note><br>
+                        {{ user.driver.address }}
                     </ion-label>
-                    {{ user.driver.address }}
                 </ion-item>
                 <ion-item>
                     <ion-label>
-                        Código postal
+                        <ion-note>Código postal</ion-note><br>
+                        {{ user.driver.zip }}
                     </ion-label>
-                    {{ user.driver.zip }}
                 </ion-item>
                 <ion-item>
                     <ion-label>
-                        Localidade
+                        <ion-note>Localidade</ion-note><br>
+                        {{ user.driver.city }}
                     </ion-label>
-                    {{ user.driver.city }}
                 </ion-item>
                 <ion-item>
                     <ion-label>
-                        Carta de condução
+                        <ion-note>Carta de condução</ion-note><br>
+                        {{ user.driver.driver_license }}
                     </ion-label>
-                    {{ user.driver.driver_license }}
                 </ion-item>
                 <ion-item>
                     <ion-label>
-                        Código UBER
+                        <ion-note>Código UBER</ion-note><br>
+                        {{ user.driver.uber_uuid }}
                     </ion-label>
-                    {{ user.driver.uber_uuid }}
                 </ion-item>
                 <ion-item>
                     <ion-label>
-                        Código BOLT
+                        <ion-note>Código BOLT</ion-note><br>
+                        {{ user.driver.bolt_name }}
                     </ion-label>
-                    {{ user.driver.bolt_name }}
                 </ion-item>
                 <ion-item>
                     <ion-label>
-                        Viatura
+                        <ion-note>Viatura</ion-note><br>
+                        {{ user.driver.license_plate }}
                     </ion-label>
-                    {{ user.driver.license_plate }}
                 </ion-item>
                 <ion-item>
                     <ion-label>
-                        Marca
+                        <ion-note>Marca</ion-note><br>
+                        {{ user.driver.brand }}
                     </ion-label>
-                    {{ user.driver.brand }}
                 </ion-item>
                 <ion-item>
                     <ion-label>
-                        Modelo
+                        <ion-note>Modelo</ion-note><br>
+                        {{ user.driver.model }}
                     </ion-label>
-                    {{ user.driver.model }}
                 </ion-item>
             </ion-list>
         </ion-card-content>

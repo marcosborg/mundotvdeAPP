@@ -2,7 +2,8 @@
 
 <ion-content *ngIf="activityLaunches">
     <div class="ion-margin-horizontal ion-margin-top">
-        <ion-button color="success" expand="block" *ngIf="!status || status == 'end'" size="small" (click)="newTimeLog('start')">
+        <ion-button color="success" expand="block" *ngIf="!status || status == 'end'" size="small"
+            (click)="newTimeLog('start')">
             Iniciar turno
         </ion-button>
         <ion-grid *ngIf="status == 'start' || status == 'continue'">
@@ -13,13 +14,14 @@
                     </ion-button>
                 </ion-col>
                 <ion-col>
-                    <ion-button color="danger" expand="block" size="small" (click)="newTimeLog('end')">
+                    <ion-button color="primary" expand="block" size="small" (click)="newTimeLog('end')">
                         Concluir turno
                     </ion-button>
                 </ion-col>
             </ion-row>
         </ion-grid>
-        <ion-button color="secondary" expand="block" *ngIf="status == 'pause'" size="small" (click)="newTimeLog('continue')">
+        <ion-button color="secondary" expand="block" *ngIf="status == 'pause'" size="small"
+            (click)="newTimeLog('continue')">
             Retomar turno
         </ion-button>
         <ion-button size="small" expand="full" fill="clear" color="light" (click)="openTimeLogs()">
@@ -56,7 +58,8 @@
                         {{ selectedFile ? selectedFile.name : 'Escolher Ficheiro' }}
                     </ion-button>
                     <ion-item lines="none">
-                        <ion-input labelPlacement="stacked" label="Valor do saldo disponível (€)" [(ngModel)]="total"></ion-input>
+                        <ion-input labelPlacement="stacked" label="Valor do saldo disponível (€)"
+                            [(ngModel)]="total"></ion-input>
                     </ion-item>
                     <!-- Botão de enviar -->
                     <ion-button expand="block" type="submit" color="success" [disabled]="!selectedFile">
@@ -74,7 +77,34 @@
             <ion-card-content *ngIf="activityLaunches && activityLaunches[0]?.activity_per_operators">
                 <app-chart [activityData]="activityLaunches[0].activity_per_operators"></app-chart>
             </ion-card-content>
+            <ion-card-content *ngIf="activityLaunches && activityLaunches.length > 0">
+                <h4 class="margin-left">Totais da semana</h4>
+                <ion-grid class="custom-table">
+                    <!-- Linha 1 -->
+                    <ion-row class="data-row">
+                        <ion-col size="8" class="header-cell">Recebimentos</ion-col>
+                        <ion-col size="4" class="data-cell">€ {{ activityLaunches[0].total_after_refund | number:'1.2-2'
+                            }}</ion-col>
+                    </ion-row>
 
+                    <!-- Linha 2 -->
+                    <ion-row class="data-row">
+                        <ion-col size="8" class="header-cell">Descontos</ion-col>
+                        <ion-col size="4" class="data-cell">€ {{ activityLaunches[0].total_descount_after_taxes |
+                            number:'1.2-2' }}</ion-col>
+                    </ion-row>
+
+                    <!-- Linha 3 -->
+                    <ion-row class="data-row">
+                        <ion-col size="8" class="header-cell">Total</ion-col>
+                        <ion-col size="4" class="data-cell">€ {{ activityLaunches[0].total | number:'1.2-2' }}</ion-col>
+                    </ion-row>
+                </ion-grid>
+                <ion-badge color="{{ activityLaunches[0].paid == 1 ? 'primary' : 'success' }}"
+                    class="margin-left margin-bottom">{{ activityLaunches[0].paid == 1 ? 'Pago' : 'Por pagar'
+                    }}</ion-badge>
+
+            </ion-card-content>
         </div>
         <div *ngIf="segment == 'income'">
             <ion-card-header>
@@ -134,7 +164,7 @@
                     <!-- Linha 1 -->
                     <ion-row class="data-row">
                         <ion-col size="8" class="header-cell">Recebimentos</ion-col>
-                        <ion-col size="4" class="data-cell">€ {{ activityLaunches[0].sum_net | number:'1.2-2'
+                        <ion-col size="4" class="data-cell">€ {{ activityLaunches[0].total_after_refund | number:'1.2-2'
                             }}</ion-col>
                     </ion-row>
 
@@ -151,7 +181,7 @@
                         <ion-col size="4" class="data-cell">€ {{ activityLaunches[0].total | number:'1.2-2' }}</ion-col>
                     </ion-row>
                 </ion-grid>
-                <ion-badge color="{{ activityLaunches[0].paid == 1 ? 'success' : 'danger' }}"
+                <ion-badge color="{{ activityLaunches[0].paid == 1 ? 'primary' : 'success' }}"
                     class="margin-left margin-bottom">{{ activityLaunches[0].paid == 1 ? 'Pago' : 'Por pagar'
                     }}</ion-badge>
             </div>
@@ -205,7 +235,7 @@
                         <!-- Linha 1 -->
                         <ion-row class="data-row">
                             <ion-col size="8" class="header-cell">Recebimentos</ion-col>
-                            <ion-col size="4" class="data-cell">€ {{ activityLaunch.sum_net | number:'1.2-2'
+                            <ion-col size="4" class="data-cell">€ {{ activityLaunch.total_after_refund | number:'1.2-2'
                                 }}</ion-col>
                         </ion-row>
 
@@ -222,7 +252,7 @@
                             <ion-col size="4" class="data-cell">€ {{ activityLaunch.total | number:'1.2-2' }}</ion-col>
                         </ion-row>
                     </ion-grid>
-                    <ion-badge color="{{ activityLaunches[0].paid == 1 ? 'success' : 'danger' }}"
+                    <ion-badge color="{{ activityLaunch.paid == 1 ? 'primary' : 'success' }}"
                         class="margin-left margin-bottom">{{ activityLaunch.paid == 1 ? 'Pago' : 'Por pagar'
                         }}</ion-badge>
                 </ion-card-content>
@@ -275,7 +305,8 @@
                     </ion-row>
                     <ion-row class="data-row">
                         <ion-col size="8" class="header-cell">Total</ion-col>
-                        <ion-col size="4" class="data-cell">€ {{ activityLaunches[0].total_descount_after_taxes | number:'1.2-2'
+                        <ion-col size="4" class="data-cell">€ {{ activityLaunches[0].total_descount_after_taxes |
+                            number:'1.2-2'
                             }}</ion-col>
                     </ion-row>
                 </ion-grid>
@@ -301,7 +332,7 @@
                         <ion-col size="4" class="data-cell">€ {{ activityLaunches[0].total | number:'1.2-2' }}</ion-col>
                     </ion-row>
                 </ion-grid>
-                <ion-badge color="{{ activityLaunches[0].paid == 1 ? 'success' : 'danger' }}"
+                <ion-badge color="{{ activityLaunches[0].paid == 1 ? 'primary' : 'success' }}"
                     class="margin-left margin-bottom">{{ activityLaunches[0].paid == 1 ? 'Pago' : 'Por pagar'
                     }}</ion-badge>
             </div>
@@ -315,7 +346,8 @@
                         </ion-row>
                         <ion-row class="data-row">
                             <ion-col size="8" class="header-cell">Impostos</ion-col>
-                            <ion-col size="4" class="data-cell">€ {{ activityLaunches[0].taxes | number:'1.2-2' }}</ion-col>
+                            <ion-col size="4" class="data-cell">€ {{ activityLaunches[0].taxes | number:'1.2-2'
+                                }}</ion-col>
                         </ion-row>
                         <ion-row class="data-row">
                             <ion-col size="8" class="header-cell">Aluguer</ion-col>
@@ -343,7 +375,8 @@
                         </ion-row>
                         <ion-row class="data-row">
                             <ion-col size="8" class="header-cell">Total</ion-col>
-                            <ion-col size="4" class="data-cell">€ {{ activityLaunch.total_descount_after_taxes | number:'1.2-2'
+                            <ion-col size="4" class="data-cell">€ {{ activityLaunch.total_descount_after_taxes |
+                                number:'1.2-2'
                                 }}</ion-col>
                         </ion-row>
                     </ion-grid>
@@ -369,7 +402,7 @@
                             <ion-col size="4" class="data-cell">€ {{ activityLaunch.total | number:'1.2-2' }}</ion-col>
                         </ion-row>
                     </ion-grid>
-                    <ion-badge color="{{ activityLaunches[0].paid == 1 ? 'success' : 'danger' }}"
+                    <ion-badge color="{{ activityLaunches[0].paid == 1 ? 'primary' : 'success' }}"
                         class="margin-left margin-bottom">{{ activityLaunch.paid == 1 ? 'Pago' : 'Por pagar'
                         }}</ion-badge>
                 </ion-card-content>
