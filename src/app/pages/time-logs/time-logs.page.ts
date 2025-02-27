@@ -22,6 +22,11 @@ import {
   IonButton,
   IonIcon,
   IonNote,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
+  IonCardSubtitle,
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -45,6 +50,11 @@ import {
     IonButton,
     IonIcon,
     IonNote,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent,
+    IonCardSubtitle,
   ]
 })
 export class TimeLogsPage implements OnInit {
@@ -61,7 +71,7 @@ export class TimeLogsPage implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 
   ionViewWillEnter() {
@@ -76,8 +86,13 @@ export class TimeLogsPage implements OnInit {
         this.loadingController.create().then((loading) => {
           loading.present();
           this.api.getTimeLogs(data).subscribe((resp: any) => {
+            console.log(resp);
             loading.dismiss();
-            this.timeLogs = resp;
+            this.timeLogs = Object.keys(resp).map(date => ({
+              date,
+              timePeriods: resp[date].time_periods,
+              drivingTime: resp[date].driving_time
+            }));
             console.log(this.timeLogs);
           }, (err) => {
             loading.dismiss();
