@@ -28,6 +28,7 @@ import { PreferencesService } from '../services/preferences.service';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { FunctionsService } from '../services/functions.service';
+import { ShiftComponent } from '../components/shift/shift.component';
 
 @Component({
   selector: 'app-tab1',
@@ -54,6 +55,7 @@ import { FunctionsService } from '../services/functions.service';
     IonItem,
     IonButton,
     ChartComponent,
+    ShiftComponent,
     IonButtons,
     IonInput,
   ]
@@ -83,13 +85,9 @@ export class Tab1Page {
             this.activityLaunches = resp.activityLaunches;
             this.last_receipt = resp.last_receipt;
             this.total = resp.total;
-            console.log(resp);
             this.value = this.last_receipt.value;
             this.can_create_receipt = resp.can_create_receipt;
-            this.api.lastTimeLog(data).subscribe((resp: any) => {
-              loading.dismiss();
-              this.status = resp.status;
-            });
+            loading.dismiss();
           }, (err) => {
             loading.dismiss();
             this.preferences.removeName('access_token');
@@ -110,7 +108,6 @@ export class Tab1Page {
   allexpense: boolean = false;
   can_create_receipt: boolean = false;
   value: number = 0;
-  status: string = '...';
   total: number = 0;
 
   onFileSelected(event: any): void {
@@ -152,26 +149,6 @@ export class Tab1Page {
         console.error('Erro no upload:', error);
       }
     );
-  }
-
-  async newTimeLog(status: string): Promise<void> {
-    const loading = await this.loadingController.create();
-    await loading.present();
-    let data = {
-      access_token: this.access_token,
-      status: status
-    }
-    this.api.newTimeLog(data).subscribe((resp: any) => {
-      this.status = resp.status;
-      loading.dismiss();
-    }, (err) => {
-      loading.dismiss();
-      this.functions.errors(err);
-    });
-  }
-
-  openTimeLogs() {
-    this.router.navigateByUrl('/time-logs');
   }
 
 }

@@ -1,33 +1,6 @@
 <app-header></app-header>
 
 <ion-content *ngIf="activityLaunches">
-    <div class="ion-margin-horizontal ion-margin-top">
-        <ion-button color="success" expand="block" *ngIf="!status || status == 'end'" size="small"
-            (click)="newTimeLog('start')">
-            Iniciar turno
-        </ion-button>
-        <ion-grid *ngIf="status == 'start' || status == 'continue'">
-            <ion-row>
-                <ion-col>
-                    <ion-button color="medium" expand="block" size="small" (click)="newTimeLog('pause')">
-                        Pausar turno
-                    </ion-button>
-                </ion-col>
-                <ion-col>
-                    <ion-button color="primary" expand="block" size="small" (click)="newTimeLog('end')">
-                        Concluir turno
-                    </ion-button>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-        <ion-button color="secondary" expand="block" *ngIf="status == 'pause'" size="small"
-            (click)="newTimeLog('continue')">
-            Retomar turno
-        </ion-button>
-        <ion-button size="small" expand="full" fill="clear" color="light" (click)="openTimeLogs()">
-            Consultar turnos
-        </ion-button>
-    </div>
     <ion-card>
         <ion-card-content>
             <ion-segment value="graph" [(ngModel)]="segment">
@@ -412,3 +385,4 @@
 
 </ion-content>
 <app-chat></app-chat>
+<app-shift></app-shift>
