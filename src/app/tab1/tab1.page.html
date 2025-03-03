@@ -288,7 +288,7 @@
                     <!-- Linha 1 -->
                     <ion-row class="data-row">
                         <ion-col size="8" class="header-cell">Recebimentos</ion-col>
-                        <ion-col size="4" class="data-cell">€ {{ activityLaunches[0].sum_net | number:'1.2-2'
+                        <ion-col size="4" class="data-cell">€ {{ activityLaunches[0].total_after_refund | number:'1.2-2'
                             }}</ion-col>
                     </ion-row>
 
@@ -358,7 +358,7 @@
                         <!-- Linha 1 -->
                         <ion-row class="data-row">
                             <ion-col size="8" class="header-cell">Recebimentos</ion-col>
-                            <ion-col size="4" class="data-cell">€ {{ activityLaunch.sum_net | number:'1.2-2'
+                            <ion-col size="4" class="data-cell">€ {{ activityLaunch.total_after_refund | number:'1.2-2'
                                 }}</ion-col>
                         </ion-row>
 

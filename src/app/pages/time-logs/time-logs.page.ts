@@ -83,17 +83,16 @@ export class TimeLogsPage implements OnInit {
         let data = {
           access_token: this.access_token
         }
+        console.log(data);
         this.loadingController.create().then((loading) => {
           loading.present();
           this.api.getTimeLogs(data).subscribe((resp: any) => {
-            console.log(resp);
             loading.dismiss();
             this.timeLogs = Object.keys(resp).map(date => ({
               date,
               timePeriods: resp[date].time_periods,
               drivingTime: resp[date].driving_time
             }));
-            console.log(this.timeLogs);
           }, (err) => {
             loading.dismiss();
             this.preferences.removeName('access_token');
