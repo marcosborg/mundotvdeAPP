@@ -80,7 +80,6 @@ export class ShiftComponent implements OnInit {
         let data = {
           access_token: this.access_token
         }
-        console.log(data);
         this.loadingController.create().then((loading) => {
           loading.present();
           this.api.lastTimeLog(data).subscribe((resp: any) => {
