@@ -237,7 +237,7 @@
                 <ion-card-subtitle>Confira todos os descontos</ion-card-subtitle>
             </ion-card-header>
             <ion-buttons>
-                <ion-button class="ion-margin-left" size="small" color="light" (click)="allexpense=!allexpense">
+                <ion-button class="ion-margin-left" size="small" color="primary" (click)="allexpense=!allexpense">
                     {{ allexpense ? 'Esta semana' : 'Últimas semanas' }}
                 </ion-button>
             </ion-buttons>
@@ -375,7 +375,7 @@
                             <ion-col size="4" class="data-cell">€ {{ activityLaunch.total | number:'1.2-2' }}</ion-col>
                         </ion-row>
                     </ion-grid>
-                    <ion-badge color="{{ activityLaunches[0].paid == 1 ? 'primary' : 'success' }}"
+                    <ion-badge color="{{ activityLaunch.paid == 1 ? 'primary' : 'success' }}"
                         class="margin-left margin-bottom">{{ activityLaunch.paid == 1 ? 'Pago' : 'Por pagar'
                         }}</ion-badge>
                 </ion-card-content>
